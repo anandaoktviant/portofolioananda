@@ -1,7 +1,6 @@
 /**
 * PHP Email Form Validation - v3.10
 * URL: https://bootstrapmade.com/php-email-form/
-* Author: BootstrapMade.com
 */
 (function () {
   "use strict";
@@ -21,7 +20,8 @@
         displayError(thisForm, 'The form action property is not set!');
         return;
       }
-      thisForm.querySelector('.error-message').classList.remove('d-block');
+      
+      
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
       let formData = new FormData( thisForm );
@@ -39,12 +39,9 @@
               displayError(thisForm, error);
             }
           });
-        } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
+        
         }
-      } else {
-        php_email_form_submit(thisForm, action, formData);
-      }
+      } 
     });
   });
 
@@ -57,10 +54,9 @@
     .then(response => {
       if( response.ok ) {
         return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
+      } 
     })
+    
     .catch((error) => {
       displayError(thisForm, error);
     });
